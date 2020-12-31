@@ -151,6 +151,11 @@ Requires `input`.
 
 ## What Order Should I Put my Dictionaries in?
 ### KanjiEater's Recommended Order
+
+KanjiEater's Actual Setup
+
+<a href="https://imgur.com/rb3iBj7"><img src="https://i.imgur.com/rb3iBj7.png" title="source: imgur.com" /></a>
+
 Numbered entries are hard preferences and bulleted items are optional
 
 1. Zen (ゼン)
