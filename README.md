@@ -2,7 +2,7 @@
 
 
 # Zen (ゼン - Jisho.org)
-
+![Zen Tool](https://i.imgur.com/omfDoCH.gif)
 #### Description
 Jisho's deconjugation & sentence parsing are top notch. It also has wikipedia entries loaded into it. This tool allows you to use the Jisho Zen Bar monolingually - no need to see English definitions if you don't want to (and you can still use JMDict inside GoldenDict if you do)! 
 
@@ -24,7 +24,7 @@ Requires `input`.
 
 
 # Images (画像 - Google Images)
-
+![Images Tool](https://i.imgur.com/vHZUuoc.png)
 #### Description
 
 
@@ -51,8 +51,11 @@ Requires `input` and `lang`.
 
 
 # Anki (暗記 - Anki)
+![Anki Tool](https://i.imgur.com/iX3VHHO.png)
 Coming January 2021
+
 # Frequency (Contained in Anki - Netflix Frequency List)
+![Frequency Tool](https://i.imgur.com/YLaL8un.png)
 ### Description
 Coming January 2021
 
