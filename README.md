@@ -1,7 +1,52 @@
-# KanjiEater's GoldenDict Toolbelt
+# KanjiEater's GoldenDict Japanese Toolbelt
+
+# Table of Contents
+
+* [Download and Setup](#Download-and-Setup)
+* [Installation of Tools](#Installation-of-Tools)
+* [Zen](#Zen)
+* [Images](#images)
+* [Anki](#anki) 
+* [Frequency](#frequency) 
+* [Golden Assets](#golden-assets) 
+* [FAQ](#faq)
+* [Support](#support)
+
+# Download and Setup
+A compatible version of GoldenDict is required. Currently only Windows is *officially* supported, but there is a Mac & Linux versions of GoldenDict. 
+The most compatible version is currently `1.5.0-RC2-254-g15062f7` - later versions do exists, but have issues for Japanese (unable to change CSS Font).
+## GoldenDict
+1. Download `1.5.0-RC2-254-g15062f7` installer from [here](https://sourceforge.net/projects/goldendict/files/early%20access%20builds/GoldenDict-1.5.0-RC2-311-g15062f7-Install.exe/download)
+2. Install
+3. Start GoldenDict
+
+## Anki
+1. Have a 2.1 version of Anki (KanjiEater uses 2.1.22 but any recent version should do)
+2. Install the [AnkiConnect Addon](https://foosoft.net/projects/anki-connect/) using code `2055492159`
+3. Install the  [KanjiEater's GoldenDict Japanese Toolbelt](https://ankiweb.net/shared/info/247820692) using code `247820692` 
+4. You can now move on to installation of Tools!
+
+# Installation of Tools
+
+1. Open `GoldenDict`
+2. Go to `Dictionaries` (Hotkey: F3)
+3. `Sources` will be open by default with `Files` opened
+4. Go to `Programs`
+5. Click `Add...` on the right
+6. In the column labeled `Enabled` click the checkbox so that it is checked
+7. In the column labeled `Type` change the `Type` from `Audio` or whatever the default was to `Html`
+8. In the column labeled `Name`, give it the name of the Tool
+   * **Important** `golden-assets` must be named `golden-assets`
+9. Paste the command line options from one of the sections below and modify as necessary 
+10. Click `Groups` in the top row of tabs
+11. Add the Tool you just added to `Programs` by finding it, clicking it in the `Dictionaries available`, then while it's selected, click the `>` button in the center
+12. Arrange the Tool order as necessary (See [KanjiEater's Recommended Order](#kanjieaters-recommended-order))
 
 
-# Zen (ゼン - Jisho.org)
+
+# Zen 
+## ゼン - Jisho.org
+
 ![Zen Tool](https://i.imgur.com/omfDoCH.gif)
 #### Description
 Jisho's deconjugation & sentence parsing are top notch. It also has wikipedia entries loaded into it. This tool allows you to use the Jisho Zen Bar monolingually - no need to see English definitions if you don't want to (and you can still use JMDict inside GoldenDict if you do)! 
@@ -23,7 +68,9 @@ Requires `input`.
 `C:\Users\KanjiEater\AppData\Roaming\Anki2\addons21\goldendict\anki-search-win.exe --input %GDWORD% --timeout 4000`
 
 
-# Images (画像 - Google Images)
+# Images 
+## 画像 - Google Images
+
 ![Images Tool](https://i.imgur.com/vHZUuoc.png)
 #### Description
 
@@ -50,19 +97,28 @@ Requires `input` and `lang`.
 `C:\Users\KanjiEater\AppData\Roaming\Anki2\addons21\goldendict\goldenimage-win.exe  --input %GDWORD% --lang ja --images 20`
 
 
-# Anki (暗記 - Anki)
+# Anki 
+## 暗記 - Anki
+
 ![Anki Tool](https://i.imgur.com/iX3VHHO.png)
 Coming January 2021
 
-# Frequency (Contained in Anki - Netflix Frequency List)
+# Frequency 
+## Contained in Anki - Netflix Frequency List
+
 ![Frequency Tool](https://i.imgur.com/YLaL8un.png)
+
 ### Description
+Integrated Frequency Stars:
+![Frequency Stars](https://i.imgur.com/V1D55BW.png)
+
 Coming January 2021
 
 Everything > 89310 is 1 occurrence
 
 
-# Golden Assets (golden-assets - Word Highlighting & More)
+# Golden Assets 
+## golden-assets - Word Highlighting & More
 
 ### Description
 
@@ -87,22 +143,6 @@ Requires `input`.
 
 `C:\Users\KanjiEater\AppData\Roaming\Anki2\addons21\goldendict\goldenassets-win.exe --input %GDWORD%`
 
-
-# Installation
-
-1. Open `GoldenDict`
-2. Go to `Dictionaries` (Hotkey: F3)
-3. `Sources` will be open by default with `Files` opened
-4. Go to `Programs`
-5. Click `Add...` on the right
-6. In the column labeled `Enabled` click the checkbox so that it is checked
-7. In the column labeled `Type` change the `Type` from `Audio` or whatever the default was to `Html`
-8. In the column labeled `Name`, give it the name of the Tool
-   * **Important** `golden-assets` must be named `golden-assets`
-9. Paste the command line options from one of the sections below and modify as necessary 
-10. Click `Groups` in the top row of tabs
-11. Add the Tool you just added to `Programs` by finding it, clicking it in the `Dictionaries available`, then while it's selected, click the `>` button in the center
-12. Arrange the Tool order as necessary (See [KanjiEater's Recommended Order](#kanjieaters-recommended-order))
 
 
 
@@ -168,3 +208,14 @@ If you still don't understand you can explore your other dictionaries or do recu
 
 You can always refer to JMdict for translations of words with one-to-one correlations.
 
+# Support
+
+If you find my tools useful please consider supporting via Patreon. I have spent countless hours to make these useful for not only myself but other's as well and am now offering them completely 100% free.
+
+<a href="https://www.patreon.com/kanjieater" rel="nofollow"><img src="https://i.imgur.com/VCTLqLj.png"></a>
+
+If you can't contribute monetarily please consider following on:
+
+<a href="https://www.youtube.com/channel/UCU1cAd9sJ4HeiBDsjnmifAQ"><img src="https://i.imgur.com/t4wo4SHs.png" title="YouTube" /></a>
+<a href="https://twitter.com/kanjieater"><img src="https://i.imgur.com/QvGDFVQs.png" title="twitter" /></a>
+<a href="https://www.twitch.tv/kanjieater"><img src="https://i.imgur.com/UKeRp24s.png" title="twitch" /></a>
