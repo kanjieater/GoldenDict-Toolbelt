@@ -12,19 +12,42 @@
 * [FAQ](#faq)
 * [Support](#support)
 
+
+
 # Download and Setup
 A compatible version of GoldenDict is required. Currently only Windows is *officially* supported, but there is a Mac & Linux versions of GoldenDict. 
 The most compatible version is currently `1.5.0-RC2-254-g15062f7` - later versions do exists, but have issues for Japanese (unable to change CSS Font).
+
+## Anki
+Anki is used to keep the Tools up to date as well as enable additional Tool functionallity.
+
+1. Have a 2.1 version of Anki (KanjiEater uses 2.1.22 but 2.1.35 has been tested, and future versions should be supported automatically)
+2. Install the [AnkiConnect Addon](https://foosoft.net/projects/anki-connect/) using code `2055492159`
+3. Install the  [KanjiEater's GoldenDict Japanese Toolbelt](https://ankiweb.net/shared/info/247820692) using code `247820692` 
+4. You can move onto the [GoldenDict setup](##GoldenDict)
+
 ## GoldenDict
 1. Download `1.5.0-RC2-254-g15062f7` installer from [here](https://sourceforge.net/projects/goldendict/files/early%20access%20builds/GoldenDict-1.5.0-RC2-311-g15062f7-Install.exe/download)
 2. Install
-3. Start GoldenDict
 
-## Anki
-1. Have a 2.1 version of Anki (KanjiEater uses 2.1.22 but any recent version should do)
-2. Install the [AnkiConnect Addon](https://foosoft.net/projects/anki-connect/) using code `2055492159`
-3. Install the  [KanjiEater's GoldenDict Japanese Toolbelt](https://ankiweb.net/shared/info/247820692) using code `247820692` 
-4. You can now move on to installation of Tools!
+## Apply the GoldenDict Theme
+These instructions will allow you to install `darkmode` which is the only currently supported theme for the Toolbelt. You can also additionally reference themes in GoldenDict [here](https://github.com/goldendict/goldendict/wiki/GoldenDict-Dark-Theme).
+
+1. Start GoldenDict (this will create app folders on your computer automatically)
+2. Go to your GoldenDict Anki add-on folder (`%AppData%\Anki2\addons21\247820692`)
+3. Install the font, `HiraKakuProN-W2-AlphaNum-02.otf`, by double clicking on it, then clicking install (This is the font that the GoldenDict theme will refer to - if you know CSS you can replace it in the css file of the next step)
+4. Go back to the `%AppData%\Anki2\addons21\247820692` folder
+5. Copy the `styles` directory
+6. Go to the GoldenDict app folder `%AppData%\Anki2\GoldenDict`
+7. Paste the `styles` directory to this folder
+8. Go into `%AppData%\Anki2\GoldenDict\styles\darkmode`, which will contain your css. You can modifiy the css file here to change the theme's style manually with this file 
+10. Open Preferences inside of GoldenDict (`Hotkey: F4`)
+11. Select darkmode from the dropdown
+12. Restart GoldenDict and you should see your theme applied (this is the only theme compatible with the Toolbelt currently)
+13. Now that you've started it once, exit out of GoldenDict
+14. You can now move on to installation of Tools!
+
+PRO TIP: Pressing `Alt` and `+` will make your search bar bigger
 
 # Installation of Tools
 
@@ -65,7 +88,7 @@ An integer that represents milliseconds. (So 4000 would be 4 seconds)
 #### Example
 Requires `input`.
 
-`C:\Users\KanjiEater\AppData\Roaming\Anki2\addons21\goldendict\anki-search-win.exe --input %GDWORD% --timeout 4000`
+`C:\Users\KanjiEater\AppData\Roaming\Anki2\addons21\247820692\anki-search-win.exe --input %GDWORD% --timeout 4000`
 
 
 # Images 
@@ -94,7 +117,7 @@ The number of images to show. Maximum of 20.
 #### Example
 Requires `input` and `lang`.
 
-`C:\Users\KanjiEater\AppData\Roaming\Anki2\addons21\goldendict\goldenimage-win.exe  --input %GDWORD% --lang ja --images 20`
+`C:\Users\KanjiEater\AppData\Roaming\Anki2\addons21\247820692\goldenimage-win.exe  --input %GDWORD% --lang ja --images 20`
 
 
 # Anki 
@@ -141,7 +164,7 @@ The word that will be highlighted.
 #### Example
 Requires `input`.
 
-`C:\Users\KanjiEater\AppData\Roaming\Anki2\addons21\goldendict\goldenassets-win.exe --input %GDWORD%`
+`C:\Users\KanjiEater\AppData\Roaming\Anki2\addons21\247820692\goldenassets-win.exe --input %GDWORD%`
 
 
 
