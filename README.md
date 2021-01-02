@@ -38,14 +38,16 @@ These instructions will allow you to install `darkmode` which is the only curren
 3. Install the font, `HiraKakuProN-W2-AlphaNum-02.otf`, by double clicking on it, then clicking install (This is the font that the GoldenDict theme will refer to - if you know CSS you can replace it in the css file of the next step)
 4. Go back to the `%AppData%\Anki2\addons21\247820692` folder
 5. Copy the `styles` directory
-6. Go to the GoldenDict app folder `%AppData%\Anki2\GoldenDict`
+6. Go to the GoldenDict app folder `%AppData%\GoldenDict`
 7. Paste the `styles` directory to this folder
-8. Go into `%AppData%\Anki2\GoldenDict\styles\darkmode`, which will contain your css. You can modifiy the css file here to change the theme's style manually with this file 
-10. Open Preferences inside of GoldenDict (`Hotkey: F4`)
-11. Select darkmode from the dropdown
-12. Restart GoldenDict and you should see your theme applied (this is the only theme compatible with the Toolbelt currently)
-13. Now that you've started it once, exit out of GoldenDict
-14. You can now move on to installation of Tools!
+8. Go into `%AppData%\GoldenDict\styles\darkmode`, which will contain your css. You can modifiy the css file here to change the theme's style manually with this file 
+9. Got to `%AppData%\Anki2\addons21\247820692\assets\fonts`
+10. Install the font HiraKakuProN-W2-AlphaNum-02.otf by double clicking it, then clicking Install. This will be the font used by GoldenDict's theme
+11. Open Preferences inside of GoldenDict (`Hotkey: F4`)
+12. Select darkmode from the dropdown
+13. Restart GoldenDict and you should see your theme applied (this is the only theme compatible with the Toolbelt currently)
+14. Now that you've started it once, exit out of GoldenDict
+15. You can now move on to installation of Tools!
 
 PRO TIP: Pressing `Alt` and `+` will make your search bar bigger
 
