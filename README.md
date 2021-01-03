@@ -1,5 +1,7 @@
 # KanjiEater's GoldenDict Japanese Toolbelt
 
+# Check out the instruction video here: [KanjiEater's Golden Toolbelt Guide](https://www.youtube.com/watch?v=5FAgFC9NYAo)
+
 # Table of Contents
 
 * [Download and Setup](#Download-and-Setup)
@@ -15,7 +17,7 @@
 
 
 # Download and Setup
-A compatible version of GoldenDict is required. Currently only Windows is *officially* supported, but there is a Mac & Linux versions of GoldenDict. 
+A compatible version of GoldenDict is required. Currently only Windows (x64) is *officially* supported, but there is a Mac & Linux versions of GoldenDict. 
 The most compatible version is currently `1.5.0-RC2-254-g15062f7` - later versions do exists, but have issues for Japanese (unable to change CSS Font).
 
 ## Anki
@@ -126,7 +128,136 @@ Requires `input` and `lang`.
 ## 暗記 - Anki
 
 ![Anki Tool](https://i.imgur.com/iX3VHHO.png)
-Coming January 2021
+#### Description
+Not Currently Released. Will be released in January 2021
+
+### Command Line
+#### Required `input` 
+The word or phrase that will be searched on Google Images.
+##### Acceptable Value
+`%GDWORD%` , which GoldenDict knows to replace with whatever was searched in the search bar.
+
+#### Required `ankimedia` 
+The path to your media folder.
+
+
+At the beginning, put  `file:///` on windows (may differ on other OS waiting on others to confirm)
+
+Then put your full path:
+`C:/Users/KanjiEater/AppData/Roaming/Anki2/SomeProfile/collection.media/`
+
+There's a trailing slash at the end `collection.media/` to indicate a folder
+
+Finally surround it by quotes as seen in the Example value.
+
+##### Example Value
+`--ankimedia 'file:///C:/Users/KanjiEater/AppData/Roaming/Anki2/SomeProfile/collection.media/'`
+
+#### Required `fields` (Defaults to 'dueDate')
+
+##### Acceptable Value
+Each field must be separated by a space.
+#### Special Fields
+
+`Image`
+
+Image is the only field that can display images. Please rename your note's Snapshot or other field containing images to `Image`. It can contain multiple images, which will be shown, but no other field currently supports images being displayed.
+
+
+#### Custom Note Type Fields
+Can be anything that doesn't conflict with Card Fields.
+
+Examples: `Expression`, `Vocab`, `Image`
+
+#### Card Fields
+   
+   Examples:
+   `modelName`, `deckName`, `dueDate`
+
+   Here are some examples of the data that AnkiConnect returns:
+```
+   "fieldOrder": 0,
+
+   "modelName": "Japanese",
+
+   "ord": 0,
+
+   "deckName": "Shingeki no Kyojin S3",
+
+   "factor": 2500,
+
+   "interval": 7,
+
+   "note": 1598391871574,
+
+   "type": 2,
+
+   "queue": 2,
+
+   "due": 1252,
+
+   "dueDate": "2021-01-07",
+
+   "reps": 18,
+
+   "lapses": 2,
+
+   "left": 1001
+```
+### Example
+`--fields dueDate Image Vocab Expression deckName`
+
+
+#### Required `search` 
+The amount of time to wait on Jisho.org before considering the search a failure. If Jisho is down or having performance issues this will allow the dictionaries below Zen to load after the timeout (rather than waiting forever).
+##### Acceptable Value
+A valid search in the Anki's search. You should try out your search beforehand to make sure the unique syntax of Anki works in Anki itself before trying it through GoldenDict. 
+[Anki Manual: Searching](https://docs.ankiweb.net/#/searching)
+
+Make sure to only use single quotes not double quotes inside the query.
+
+Yes: `deck:'someDeckName'`
+
+No: `deck:"someDeckName"`
+
+Make sure to wrap the entire query in double quotes so it can be picked up as a single argument by the Tool as a command line argument.
+
+Yes: `--search "deck:'someDeckName'"`
+
+No: `--search deck:'someDeckName'`
+
+#### `--search` Example
+**Important: %GDWORD% gets magically turned into whatever you search inside of GoldenDict's search bar.** 
+
+This example searches only someDeckName for the search phrase inside of a Vocab field or Expression field in Anki.
+
+`--search "deck:'someDeckName' Vocab:*%GDWORD%* OR Expression:*%GDWORD%*"`
+
+#### Optional `timeout` (Default 4s)
+The amount of time to wait on Anki's initial search. Full rendering time might still take longer than 4000ms, and not fail.
+
+##### Acceptable Value
+An integer that represents milliseconds. (So 4000 would be 4 seconds)
+
+#### Optional `ankiconnect` (Defaults to AnkiConnect's default `http://localhost:8765`)
+
+##### Acceptable Value
+A full URI to the AnkiConnect server. This only needs to be changed if your AnkiConnect configuration has been modified.
+
+`http://localhost:8765` or any valid URI.
+
+#### Optional `max` (Default `1000`)
+
+##### Acceptable Value
+Any number. If there are more than this number, you won't know. This number cuts off the search early, which is useful if you search something fundamental like `あ` or `a` which might exist in every one of your cards. You can set it to `1000000` if you like, but it'd be slower to render on big searches. Normal searches (with less than 1000 results wouldn't be affected by this input parameter)
+
+
+#### Example
+Take a deep breath on this one. There's a lot that can go wrong here. Test your anki media path first (Can you copy the the C:/ path into Windows file browser and get to your media?). Test your anki search (Does anki return search results if your replace %GDWORD% with an actual word you want to search?)
+
+Requires `input`, `ankimedia`, `search`, `fields`.
+
+`C:\Users\KanjiEater\AppData\Roaming\Anki2\addons21\247820692\anki-search-win.exe --input %GDWORD% --ankimedia 'file:///C:/Users/KanjiEater/AppData/Roaming/Anki2/KanjiEater/collection.media/' --search "deck:'!優先' Vocab:*%GDWORD%* OR Expression:*%GDWORD%*" --fields dueDate Image Vocab Expression deckName`
 
 # Frequency 
 ## Contained in Anki - Netflix Frequency List
