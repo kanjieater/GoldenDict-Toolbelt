@@ -23,7 +23,7 @@ The most compatible version is currently `1.5.0-RC2-254-g15062f7` - later versio
 ## Anki
 Anki is used to keep the Tools up to date as well as enable additional Tool functionallity.
 
-1. Have a 2.1 version of Anki (KanjiEater uses 2.1.22 but 2.1.35 has been tested, and future versions should be supported automatically)
+1. Have a 2.1 version of Anki (KanjiEater uses 2.1.35, and future versions should be supported automatically for most features)
 2. Install the [AnkiConnect Addon](https://foosoft.net/projects/anki-connect/) using code `2055492159`
 3. Install the  [KanjiEater's GoldenDict Japanese Toolbelt](https://ankiweb.net/shared/info/247820692) using code `247820692` 
 4. You can move onto the [GoldenDict setup](##GoldenDict)
@@ -268,9 +268,7 @@ Requires `input`, `ankimedia`, `search`, `fields`.
 Integrated Frequency Stars:
 ![Frequency Stars](https://i.imgur.com/V1D55BW.png)
 
-Coming January 2021
-
-Everything > 89310 is 1 occurrence
+The frequency list is contained withing the anki-search file and cannot be edited currently. It contains the frequency list from [here](https://www.youtube.com/watch?v=DwJWld8hW0M&feature=youtu.be). One thing worth noting is that everything above 89310 only occured once in all of the Netflix content that this list was generated off of, so so there is no difference in frequency above 89310. By setting up the Anki section above, this feature is automatically enabled.
 
 
 # Golden Assets 
