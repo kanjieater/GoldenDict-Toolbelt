@@ -9,6 +9,7 @@
 * [Zen](#Zen)
 * [Images](#images)
 * [Anki](#anki) 
+* [Send to Anki](#Send-to-Anki) 
 * [Frequency](#frequency) 
 * [Golden Assets](#golden-assets) 
 * [FAQ](#faq)
@@ -258,6 +259,26 @@ Take a deep breath on this one. There's a lot that can go wrong here. Test your 
 Requires `input`, `ankimedia`, `search`, `fields`.
 
 `C:\Users\KanjiEater\AppData\Roaming\Anki2\addons21\247820692\anki-search-win.exe --input %GDWORD% --ankimedia 'file:///C:/Users/KanjiEater/AppData/Roaming/Anki2/KanjiEater/collection.media/' --search "deck:'!優先' Vocab:*%GDWORD%* OR Expression:*%GDWORD%*" --fields dueDate Image Vocab Expression deckName`
+
+# Send To Anki
+## Contained in Anki Tool of this Toolbelt - A button to copy definitions, vocab, and content from the users clipboard (Images, Audio, and Sentences)
+
+Configuration for this is in the Anki Addon configuration inside of Anki itself.
+
+`vocab` is the field to put the word that was searched for in GoldenDict
+
+`definition` is the name of the field in which to put definition of the vocab
+
+`hotkey` is the hotkey that will automatically copy content from the clipboard to the corresponding field based on what type the content is. Currently text, audio, and images can be automatically recognized and pasted into the matching field. The supported keys and their names are listed [here](https://pypi.org/project/global-hotkeys/). Only windows supports the hotkey feature currently.
+
+`model` the Anki Note Model to default to using when copying the content 
+
+`image` is the field where Images in the clipboard will be copied automatically when the hotkey is pressed.
+
+`audio` is the field where Audio in the clipboard will be copied automatically when the hotkey is pressed.
+
+`text` is the field where text in the clipboard will be copied automatically when the hotkey is pressed. It is typically the sentence or Expression field that contains a full phrase
+
 
 # Frequency 
 ## Contained in Anki - Netflix Frequency List
