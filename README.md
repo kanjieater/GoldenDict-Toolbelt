@@ -329,11 +329,10 @@ Requires `input`.
 ## How is this different than other dictionary apps (like Migaku or Yomichan)? 
 There are a lot of overlapping functionality with Migaku & Yomichan. You can't do all of this with either of them though.
 Here are some things you can do with this toolset
-1. Full phrase  deinflection ( not just single words) & Jisho's recommendations
+1. Full phrase deinflection ( not just single words) & Jisho's recommendations
 2. Google Auto Correct
-3. Frequency list that tells you which reading is most popular (migaku doesn't know the readings)
-4. Automatically do a custom search in anki - essentially turning a sentence bank into an dictionary of example sentences.
-5. Automatically add Images, Audio, or Text from the clipboard to the appropriate field from any app with a global hotkey
+3. Automatically do a custom search in anki - essentially turning a sentence bank into an dictionary of example sentences.
+4. Automatically add Images, Audio, or Text from the clipboard to the appropriate field from any app with a global hotkey
 
 ## What Order Should I Put my Dictionaries in?
 ### KanjiEater's Recommended Order
