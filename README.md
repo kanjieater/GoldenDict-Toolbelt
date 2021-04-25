@@ -4,53 +4,67 @@
 
 # Table of Contents
 
+* [Changelog](#Changelog)
 * [Download and Setup](#Download-and-Setup)
 * [Installation of Tools](#Installation-of-Tools)
 * [Zen](#Zen)
 * [Images](#images)
 * [Anki](#anki) 
-* [Send to Anki](#Send-to-Anki) 
 * [Frequency](#frequency) 
 * [Golden Assets](#golden-assets) 
 * [FAQ](#faq)
 * [Support](#support)
 
 
+# Changelog
+1/2/2021 - Public Release
+3/21/2021 - Minor updates and inclusion of styles
+4/25/2021 - Major update. 
+
+Now supports latest beta build of GoldenDict. Please update to the latest version <a href="https://sourceforge.net/projects/goldendict/files/early%20access%20builds/GoldenDict-1.5.0-RC2-372-gc3ff15f-Install.exe/download">here</a>. Then extract that `7z` file (with winzip, winrar or a 7z extractor program) to your `C:\Program Files\`. This should result in `C:\Program Files\GoldenDict` and a bunch of files inside. Be sure to select yes to any files that conflict with `C:\Program Files\GoldenDict`, we want to update everything in it to the latest version.
+
+Switched fonts. Please install <addon-folder>247820692\assets\fonts\yugothic.ttf. 
+
+The qt-style.css is now included alongside the theme. 
+
+The anki copy images now should work at their installed location without any extra work.
+
+Fixing issues with the AutoPaste threading - this feature is still in beta.
 
 # Download and Setup
 A compatible version of GoldenDict is required. Currently only Windows (x64) is *officially* supported, but there is a Mac & Linux versions of GoldenDict. 
-The most compatible version is currently `1.5.0-RC2-254-g15062f7` - later versions do exists, but have issues for Japanese (unable to change CSS Font).
+The most compatible version is currently `1.5.0-RC2-372-gc3ff15f`
 
 ## Anki
 Anki is used to keep the Tools up to date as well as enable additional Tool functionallity.
 
-1. Have a 2.1 version of Anki (KanjiEater uses 2.1.35, and future versions should be supported automatically for most features)
+1. Have a 2.1 version of Anki (KanjiEater uses 2.1.22 but 2.1.35 has been tested, and future versions should be supported automatically)
 2. Install the [AnkiConnect Addon](https://foosoft.net/projects/anki-connect/) using code `2055492159`
 3. Install the  [KanjiEater's GoldenDict Japanese Toolbelt](https://ankiweb.net/shared/info/247820692) using code `247820692` 
 4. You can move onto the [GoldenDict setup](##GoldenDict)
 
 ## GoldenDict
-1. Download `1.5.0-RC2-254-g15062f7` installer from [here](https://sourceforge.net/projects/goldendict/files/early%20access%20builds/GoldenDict-1.5.0-RC2-311-g15062f7-Install.exe/download)
-2. Install
+1. Download `Qt 5.12.3-based 64-bit build, 1.5.0-RC2-372-gc3ff15f` from [here](https://sourceforge.net/projects/goldendict/files/early%20access%20builds/GoldenDict-1.5.0-RC2-372-gc3ff15f-Install.exe/download)
+2. Install it by extracting the file `7z` file to `C:\Program Files\`. So you should now have `C:\Program Files\GoldenDict` with a bunch of folders and files inside.
+3. You can start the program with `C:\Program Files\GoldenDict\GoldenDict.exe`
 
 ## Apply the GoldenDict Theme
 These instructions will allow you to install `darkmode` which is the only currently supported theme for the Toolbelt. You can also additionally reference themes in GoldenDict [here](https://github.com/goldendict/goldendict/wiki/GoldenDict-Dark-Theme).
 
 1. Start GoldenDict (this will create app folders on your computer automatically)
 2. Go to your GoldenDict Anki add-on folder (`%AppData%\Anki2\addons21\247820692`)
-3. Install the font, `HiraKakuProN-W2-AlphaNum-02.otf`, by double clicking on it, then clicking install (This is the font that the GoldenDict theme will refer to - if you know CSS you can replace it in the css file of the next step)
+3. Install the font, `247820692\assets\fonts\yugothic.ttf`, by double clicking on it, then clicking install (This is the font that the GoldenDict theme will refer to - if you know CSS you can replace it in the css file of the next step)
 4. Go back to the `%AppData%\Anki2\addons21\247820692` folder
 5. Copy the `styles` directory
 6. Go to the GoldenDict app folder `%AppData%\GoldenDict`
 7. Paste the `styles` directory to this folder
-8. Go into `%AppData%\GoldenDict\styles\darkmode`, which will contain your css. You can modifiy the css file here to change the theme's style manually with this file 
-9. Got to `%AppData%\Anki2\addons21\247820692\assets\fonts`
-10. Install the font HiraKakuProN-W2-AlphaNum-02.otf by double clicking it, then clicking Install. This will be the font used by GoldenDict's theme
-11. Open Preferences inside of GoldenDict (`Hotkey: F4`)
-12. Select darkmode from the dropdown
-13. Restart GoldenDict and you should see your theme applied (this is the only theme compatible with the Toolbelt currently)
-14. Now that you've started it once, exit out of GoldenDict
-15. You can now move on to installation of Tools!
+8. Go into `%AppData%\GoldenDict\styles\darkmode`, which will contain your css. You can modifiy the css file here to change the theme's style manually with this file
+8. Copy `%AppData%\GoldenDict\styles\darkmode`, which will contain your css. You can modifiy the css file here to change the theme's style manually with this file  
+9.  Open Preferences inside of GoldenDict (`Hotkey: F4`)
+10. Select darkmode from the dropdown
+11. Restart GoldenDict and you should see your theme applied (this is the only theme compatible with the Toolbelt currently)
+12. Now that you've started it once, exit out of GoldenDict
+13. You can now move on to installation of Tools!
 
 PRO TIP: Pressing `Alt` and `+` will make your search bar bigger
 
@@ -215,13 +229,15 @@ The amount of time to wait on Jisho.org before considering the search a failure.
 A valid search in the Anki's search. You should try out your search beforehand to make sure the unique syntax of Anki works in Anki itself before trying it through GoldenDict. 
 [Anki Manual: Searching](https://docs.ankiweb.net/#/searching)
 
-Make sure to only use single quotes not double quotes inside the query.
+IMPORTANT! 
+
+**Make sure to only use single quotes not double quotes inside the query.**
 
 Yes: `deck:'someDeckName'`
 
 No: `deck:"someDeckName"`
 
-Make sure to wrap the entire query in double quotes so it can be picked up as a single argument by the Tool as a command line argument.
+Make sure to wrap the entire query in double quotes so it can be picked up as a single argument by the Tool as a command line argument. *Single quotes don't work in Anki though! This program automatically convert your single quotes in your query to double quotes, which will work in Anki. This is as of Anki Version 2.1.25*
 
 Yes: `--search "deck:'someDeckName'"`
 
@@ -260,28 +276,6 @@ Requires `input`, `ankimedia`, `search`, `fields`.
 
 `C:\Users\KanjiEater\AppData\Roaming\Anki2\addons21\247820692\anki-search-win.exe --input %GDWORD% --ankimedia 'file:///C:/Users/KanjiEater/AppData/Roaming/Anki2/KanjiEater/collection.media/' --search "deck:'!優先' Vocab:*%GDWORD%* OR Expression:*%GDWORD%*" --fields dueDate Image Vocab Expression deckName`
 
-# Send To Anki
-## Contained in Anki Tool of this Toolbelt - A button to copy definitions, vocab, and content from the users clipboard (Images, Audio, and Sentences)
-
-This also adds a global hotkey to automatically add Images, Audio, or Text from the clipboard to the appropriate field from any app.
-
-Configuration for this is in the Anki Addon configuration inside of Anki itself (not GoldenDict). 
-
-`vocab` is the field to put the word that was searched for in GoldenDict
-
-`definition` is the name of the field in which to put definition of the vocab
-
-`hotkey` is the hotkey that will automatically copy content from the clipboard to the corresponding field based on what type the content is. Currently text, audio, and images can be automatically recognized and pasted into the matching field. The supported keys and their names are listed [here](https://pypi.org/project/global-hotkeys/). Only windows supports the hotkey feature currently.
-
-`model` the Anki Note Model to default to using when copying the content 
-
-`image` is the field where Images in the clipboard will be copied automatically when the hotkey is pressed.
-
-`audio` is the field where Audio in the clipboard will be copied automatically when the hotkey is pressed.
-
-`text` is the field where text in the clipboard will be copied automatically when the hotkey is pressed. It is typically the sentence or Expression field that contains a full phrase
-
-
 # Frequency 
 ## Contained in Anki - Netflix Frequency List
 
@@ -291,7 +285,9 @@ Configuration for this is in the Anki Addon configuration inside of Anki itself 
 Integrated Frequency Stars:
 ![Frequency Stars](https://i.imgur.com/V1D55BW.png)
 
-The frequency list is contained withing the anki-search file and cannot be edited currently. It contains the frequency list from [here](https://www.youtube.com/watch?v=DwJWld8hW0M&feature=youtu.be). One thing worth noting is that everything above 89310 only occured once in all of the Netflix content that this list was generated off of, so so there is no difference in frequency above 89310. By setting up the Anki section above, this feature is automatically enabled.
+Coming January 2021
+
+Everything > 89310 is 1 occurrence
 
 
 # Golden Assets 
@@ -325,14 +321,6 @@ Requires `input`.
 
 
 # FAQ
-
-## How is this different than other dictionary apps (like Migaku or Yomichan)? 
-There are a lot of overlapping functionality with Migaku & Yomichan. You can't do all of this with either of them though.
-Here are some things you can do with this toolset
-1. Full phrase deinflection ( not just single words) & Jisho's recommendations
-2. Google Auto Correct
-3. Automatically do a custom search in anki - essentially turning a sentence bank into an dictionary of example sentences.
-4. Automatically add Images, Audio, or Text from the clipboard to the appropriate field from any app with a global hotkey
 
 ## What Order Should I Put my Dictionaries in?
 ### KanjiEater's Recommended Order
@@ -398,6 +386,7 @@ If you still don't understand you can explore your other dictionaries or do recu
 
 You can always refer to JMdict for translations of words with one-to-one correlations.
 
+
 # Support
 
 If you find my tools useful please consider supporting via Patreon. I have spent countless hours to make these useful for not only myself but other's as well and am now offering them completely 100% free.
@@ -409,3 +398,4 @@ If you can't contribute monetarily please consider following on:
 <a href="https://www.youtube.com/channel/UCU1cAd9sJ4HeiBDsjnmifAQ"><img src="https://i.imgur.com/t4wo4SHs.png" title="YouTube" /></a>
 <a href="https://twitter.com/kanjieater"><img src="https://i.imgur.com/QvGDFVQs.png" title="twitter" /></a>
 <a href="https://www.twitch.tv/kanjieater"><img src="https://i.imgur.com/UKeRp24s.png" title="twitch" /></a>
+
