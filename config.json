@@ -1,0 +1,10 @@
+
+{
+    "vocab": "Vocab",
+    "definition": "VocabMeaning",
+    "hotkey": ["control", "F1"],
+    "model": "Japanese",
+    "image": "Image",
+    "audio": "Audio",
+    "text": "Expression"
+}
