@@ -1,4 +1,5 @@
 import time
+import os
 
 from PyQt5.QtCore import QMimeData
 from PyQt5.Qt import QApplication
@@ -10,6 +11,7 @@ from aqt import mw
 from .global_hotkeys import *
 
 CONFIG = mw.addonManager.getConfig(__name__)
+doCrossProfileSearch = CONFIG['addCrossProfileSearch']
 
 AUTO_PASTE_FIELDS = {
     "image": CONFIG['image'],
@@ -207,8 +209,86 @@ def start():
         mw.gdThread.release.emit(note)
         return 0
 
-        
+    @ac.util.api()
+    def crossProfileBank(self, query, desiredFields):
+        """
+        Adds another profile (typically a sentence bank) as a collection for querying
+        This method will only be available from AnkiConnect iff addCrossProfileSearch is set to true in config.json
+        Do note however that this only works when using a different profile from the sentence bank
+        (otherwise AnkiConnect returns a profile already running error (or something like that)
+        """
+        result = goldenCardsInfo(self, query, desiredFields)
 
+        #
+        # the cross-profile searching part of the code
+        #
+        crossCollectionFilename = os.path.join(mw.pm.base, CONFIG['crossProfileName'], 'collection.anki2')
+        crossCollection = anki.Collection(crossCollectionFilename)
+
+        cards = crossCollection.findCards(query)
+        crossResult = []
+        crossSuspended = []
+        crossNew = []
+        scheduler = self.scheduler()
+        for cid in cards:
+            # try:
+            crossCard = crossCollection.getCard(cid)
+            crossModel = crossCard.model()
+            crossNote = crossCard.note()
+            crossFields = {}
+            for crossInfo in crossModel['flds']:
+                crossOrder = crossInfo['ord']
+                crossName = crossInfo['name']
+                if crossName in desiredFields:
+                    crossFields[crossName] = {'value': crossNote.fields[crossOrder], 'order': crossOrder}
+
+            crossEntry = {
+                'cardId': crossCard.id,
+                'fields': crossFields,
+                'fieldOrder': crossCard.ord,
+                # 'question': util.getQuestion(card),
+                # 'answer': util.getAnswer(card),
+                'modelName': crossModel['name'],
+                'ord': crossCard.ord,
+                'deckName': crossCollection.decks.get(crossCard.did)['name'],
+                # 'css': model['css'],
+                'factor': crossCard.factor,
+                # This factor is 10 times the ease percentage,
+                # so an ease of 310% would be reported as 3100
+                'interval': crossCard.ivl,
+                'note': crossCard.nid,
+                'type': crossCard.type,
+                'queue': crossCard.queue,
+                'due': crossCard.due,
+                'reps': crossCard.reps,
+                'lapses': crossCard.lapses,
+                'left': crossCard.left,
+            }
+
+            if crossCard.queue <= 0:
+                dueDate = crossCard.due
+            else:
+                dueDate = time.time() + ((crossCard.due - scheduler.today) * 86400)
+                try:
+                    dueDate = time.strftime("%Y-%m-%d", time.localtime(dueDate))
+                except:
+                    pass
+            if crossCard.queue < 0:
+                dueDate = f'({dueDate})'
+            crossEntry['dueDate'] = dueDate
+
+            if crossCard.queue < 0:
+                crossSuspended.append(crossEntry)
+            elif crossCard.queue == 0:
+                crossNew.append(crossEntry)
+            else:
+                crossResult.append(crossEntry)
+
+        crossResult = sorted(crossResult, key=lambda k: (k['reps'], k['due']), reverse=True)
+        crossSuspended = sorted(crossSuspended, key=lambda k: (k['queue'], k['due']), reverse=False)
+        crossNew = sorted(crossNew, key=lambda k: (k['queue'], k['due']), reverse=False)
+
+        return result + crossResult + crossSuspended + crossNew
 
     @ac.util.api()
     def goldenCardsInfo(self, query, desiredFields):
@@ -289,11 +369,12 @@ def start():
 
     ac.AnkiConnect.copyToClipboard = copyToClipboard
     ac.AnkiConnect.sendToAnki = sendToAnki
-    ac.AnkiConnect.goldenCardsInfo = goldenCardsInfo
-    
+    if doCrossProfileSearch:
+        ac.AnkiConnect.goldenCardsInfo = crossProfileBank
+    else:
+        ac.AnkiConnect.goldenCardsInfo = goldenCardsInfo
+
 
 def initGlobalHotkeys():
     mw.gdThread = AutoThread(mw)
     mw.gdThread.release.connect(autoPasteListener)
-
-    
