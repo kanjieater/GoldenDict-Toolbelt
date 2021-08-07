@@ -7,6 +7,5 @@
     "image": "Image",
     "audio": "Audio",
     "text": "Expression",
-    "addCrossProfileSearch": false,
     "crossProfileName": ""
 }
