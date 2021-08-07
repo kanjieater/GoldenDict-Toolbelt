@@ -289,7 +289,8 @@ def start():
     def collection(self, pickCrossProfile=False):
         """
         Override the default collection method from AnkiConnect
-        This method dynamically returns collection method the user wants
+        This method dynamically returns either the default/current window profile collection
+        Or the cross-profile collection if there was any profile specified inside config.json
         """
         if pickCrossProfile:
             crossCollectionFilename = os.path.join(mw.pm.base, CONFIG['crossProfileName'], 'collection.anki2')
