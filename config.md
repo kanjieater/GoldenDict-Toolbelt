@@ -16,3 +16,5 @@ Detailed explanation of setup can be found [here](https://github.com/kanjieater/
 `audio` is the field where Audio in the clipboard will be copied automatically when the hotkey is pressed.
 
 `text` is the field where text in the clipboard will be copied automatically when the hotkey is pressed. It is typically the sentence or Expression field that contains a full phrase
+
+`crossProfileName` is the field where you can type in the name of your cross-profile sentence bank (Default value: "") | Sentence banks are basically huge databases of Anki Decks (usually subs2srs decks) that are separated from your main profile to save space
