@@ -1,4 +1,5 @@
 import time
+import os
 
 from PyQt5.QtCore import QMimeData
 from PyQt5.Qt import QApplication
@@ -10,6 +11,7 @@ from aqt import mw
 from .global_hotkeys import *
 
 CONFIG = mw.addonManager.getConfig(__name__)
+doCrossProfileSearch = CONFIG['crossProfileName']
 
 AUTO_PASTE_FIELDS = {
     "image": CONFIG['image'],
@@ -42,7 +44,7 @@ from aqt.qt import QObject, pyqtSignal
 
 
 class AutoThread(QObject):
-    
+
     release = pyqtSignal(dict)
 
     def __init__(self, mw):
@@ -83,7 +85,7 @@ def getDialog(openNew=True):
     #     if currDialog and currDialog.windowState() == aqt.qt.Qt.WindowActive:
     #         currDialog.activateWindow()
     #         return currDialog
-            
+
 
     dialog = aqt.DialogManager._dialogs["EditCurrent"][1]
     # showInfo(str(aqt.DialogManager._dialogs))
@@ -91,7 +93,7 @@ def getDialog(openNew=True):
         dialog = aqt.DialogManager._dialogs["AddCards"][1]
     if dialog is None:
         dialog = aqt.DialogManager._dialogs["Browser"][1]
-    if dialog is None and openNew:    
+    if dialog is None and openNew:
         mw.activateWindow()
         dialog = aqt.dialogs.open('AddCards', mw.window())
     dialog.activateWindow()
@@ -112,7 +114,7 @@ def getAutoPasteField(fields, content, mime, noText=True):
     elif '[sound:' in content:
         field = fields['audio']
     elif not noText and mime.hasText():
-        field = fields['text']  
+        field = fields['text']
     return field
 
 def doAutoPaste(editor, noText=True, isRerun=False):
@@ -174,7 +176,7 @@ def autoPasteListener(receivedContent):
         noText = True
     d = getDialog()
     # showInfo('listener')
-    
+
     if d:
         doAutoPaste(d.editor, noText)
 
@@ -188,7 +190,7 @@ def start():
         ac = __import__('2055492159')
     except:
         raise Exception('Failed to import AnkiConnect module')
-    
+
     @ac.util.api()
     def copyToClipboard(self, text):
         clipboard = QApplication.clipboard()
@@ -207,19 +209,16 @@ def start():
         mw.gdThread.release.emit(note)
         return 0
 
-        
-
-
     @ac.util.api()
-    def goldenCardsInfo(self, query, desiredFields):
-        cards = self.findCards(query)
+    def _searchCollection(self, query, desiredFields, collection=None):
+        cards = collection.findCards(query)
         result = []
         suspended = []
         new = []
         scheduler = self.scheduler()
         for cid in cards:
             # try:
-            card = self.collection().getCard(cid)
+            card = collection.getCard(cid)
             model = card.model()
             note = card.note()
             fields = {}
@@ -228,8 +227,7 @@ def start():
                 name = info['name']
                 if name in desiredFields:
                     fields[name] = {'value': note.fields[order], 'order': order}
-            
-        
+
             entry = {
                 'cardId': card.id,
                 'fields': fields,
@@ -238,10 +236,10 @@ def start():
                 # 'answer': util.getAnswer(card),
                 'modelName': model['name'],
                 'ord': card.ord,
-                'deckName': self.deckNameFromId(card.did),
+                'deckName': collection.decks.get(card.did)['name'],
                 # 'css': model['css'],
                 'factor': card.factor,
-                #This factor is 10 times the ease percentage,
+                # This factor is 10 times the ease percentage,
                 # so an ease of 310% would be reported as 3100
                 'interval': card.ivl,
                 'note': card.nid,
@@ -265,8 +263,7 @@ def start():
             if card.queue < 0:
                 dueDate = f'({dueDate})'
             entry['dueDate'] = dueDate
-            
-            
+
             if card.queue < 0:
                 suspended.append(entry)
             elif card.queue == 0:
@@ -281,19 +278,42 @@ def start():
             #     # lists correspond.
             #     result.append({})
         # return result
-        # return sorted(result, key=lambda k: (k['reps'], k['due']), reverse=False) 
+        # return sorted(result, key=lambda k: (k['reps'], k['due']), reverse=False)
         result = sorted(result, key=lambda k: (k['reps'], k['due']), reverse=True)
         suspended = sorted(suspended, key=lambda k: (k['queue'], k['due']), reverse=False)
         new = sorted(new, key=lambda k: (k['queue'], k['due']), reverse=False)
         return result + new + suspended
 
+    @ac.util.api()
+    def pickCollection(self, pickCrossProfile=False):
+        """
+        returns either the current collection or a specified cross-profile collection
+        """
+        if pickCrossProfile:
+            crossCollectionFilename = os.path.join(mw.pm.base, CONFIG['crossProfileName'], 'collection.anki2')
+            crossCollection = anki.Collection(crossCollectionFilename)
+            return crossCollection
+        else:
+            return self.collection()
+
+
+    @ac.util.api()
+    def goldenCardsInfo(self, query, desiredFields):
+
+        result = _searchCollection(self, query, desiredFields, collection=pickCollection(self, pickCrossProfile=False))
+
+        crossResult = []
+        if doCrossProfileSearch:
+            crossResult = _searchCollection(self, query, desiredFields, collection=pickCollection(self, pickCrossProfile=True))
+
+        return result + crossResult
+
+
     ac.AnkiConnect.copyToClipboard = copyToClipboard
     ac.AnkiConnect.sendToAnki = sendToAnki
     ac.AnkiConnect.goldenCardsInfo = goldenCardsInfo
-    
+
 
 def initGlobalHotkeys():
     mw.gdThread = AutoThread(mw)
     mw.gdThread.release.connect(autoPasteListener)
-
-    

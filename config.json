@@ -6,5 +6,6 @@
     "model": "Japanese",
     "image": "Image",
     "audio": "Audio",
-    "text": "Expression"
+    "text": "Expression",
+    "crossProfileName": ""
 }
