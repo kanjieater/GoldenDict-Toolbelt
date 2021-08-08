@@ -287,8 +287,7 @@ def start():
     @ac.util.api()
     def pickCollection(self, pickCrossProfile=False):
         """
-        Override the default collection method from AnkiConnect
-        This method dynamically returns collection method the user wants
+        returns either the current collection or a specified cross-profile collection
         """
         if pickCrossProfile:
             crossCollectionFilename = os.path.join(mw.pm.base, CONFIG['crossProfileName'], 'collection.anki2')
