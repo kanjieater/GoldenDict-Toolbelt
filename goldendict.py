@@ -284,35 +284,28 @@ def start():
         new = sorted(new, key=lambda k: (k['queue'], k['due']), reverse=False)
         return result + new + suspended
 
-
     @ac.util.api()
-    def collection(self, pickCrossProfile=False):
+    def pickCollection(self, pickCrossProfile=False):
         """
         Override the default collection method from AnkiConnect
-        This method dynamically returns either the default/current window profile collection
-        Or the cross-profile collection if there was any profile specified inside config.json
+        This method dynamically returns collection method the user wants
         """
         if pickCrossProfile:
             crossCollectionFilename = os.path.join(mw.pm.base, CONFIG['crossProfileName'], 'collection.anki2')
             crossCollection = anki.Collection(crossCollectionFilename)
             return crossCollection
         else:
-            # copied from foosoft's AnkiConnect code
-            collection = self.window().col
-            if collection is None:
-                raise Exception('collection is not available')
-
-            return collection
+            return self.collection()
 
 
     @ac.util.api()
     def goldenCardsInfo(self, query, desiredFields):
 
-        result = _searchCollection(self, query, desiredFields, collection=collection(self, pickCrossProfile=False))
+        result = _searchCollection(self, query, desiredFields, collection=pickCollection(self, pickCrossProfile=False))
 
         crossResult = []
         if doCrossProfileSearch:
-            crossResult = _searchCollection(self, query, desiredFields, collection=collection(self, pickCrossProfile=True))
+            crossResult = _searchCollection(self, query, desiredFields, collection=pickCollection(self, pickCrossProfile=True))
 
         return result + crossResult
 
