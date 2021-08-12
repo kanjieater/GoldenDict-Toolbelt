@@ -2,18 +2,62 @@ MainWindow {
 	background: #222;
 	color: #D4D2CF;
 }
-MainWindow #searchPane #translateLine, MainWindow #searchPane #wordList
-{
+
+MainWindow #searchPane #translateLine, MainWindow #searchPane #wordList {
 	background: #222;
 	color: #D4D2CF;
 }
-MainWindow #favoritesPane #favoritesTree
-{
+
+MainWindow #favoritesPane #favoritesTree {
 	background: #222;
 	color: #D4D2CF;
 }
-MainWindow #translateLine, ScanPopup #translateLine, MainWindow #wordList, MainWindow #dictsPane #dictsList, MainWindow #historyPane #historyList
-{
+
+MainWindow #translateLine, ScanPopup #translateLine, MainWindow #wordList, MainWindow #dictsPane #dictsList, MainWindow #historyPane #historyList {
 	background: #222;
 	color: #D4D2CF
+}
+
+/* New additions */
+
+/* Make the labels for various panes white ("History", "Found in Dictionaries", etc.). */
+MainWindow #searchPane QLabel, MainWindow #favoritesPane QLabel, MainWindow #dictsPane QLabel, MainWindow #historyPane QLabel {
+	background: #222;
+	color: #D4D2CF;
+}
+
+/* Make the Group drop-down box black in Navbar, when Search pane is not enabled.  */
+MainWindow #navToolbar GroupComboBox, MainWindow #navToolbar GroupComboBox::hover, MainWindow #navToolbar GroupComboBox::pressed {
+	background: #222;
+	color: #D4D2CF;
+}
+
+/* Make the Group drop-down box black in Search pane. */
+MainWindow #searchPane GroupComboBox {
+	background: #222;
+	color: #D4D2CF;
+	border: 1px solid #D4D2CF;
+}
+
+/* Make dictionary names white when [View>Show Names in Dictionary Bar] is enabled. */
+MainWindow #dictionaryBar QWidget {
+	background: #222;
+	color: #D4D2CF;
+	padding: 1px;
+}
+
+/* Make the menubar (File, View, Edit, Etc.) black. */
+MainWindow #menubar {
+	background: #222;
+	color: #D4D2CF;
+}
+
+MainWindow #menubar::item:selected {
+	background: #1F2D39;
+	border: 1px solid #1B374E;
+}
+
+MainWindow #menubar::item:pressed {
+	background: #1B374E;
+	border: 1px solid #144C7A;
 }
