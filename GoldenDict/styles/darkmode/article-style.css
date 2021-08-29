@@ -203,14 +203,12 @@ code::selection
 {
 	background: white;
 }
-
+/*
 .dsl_s_wav img, .lsa_play img, .forvo_play img[alt="Play"]
 {
-  /**
   display: none;
-  **/
 }
-
+*/
 .dsl_s_wav a, .lsa_play td:nth-of-type(1) a, .forvo_play td:nth-of-type(1) a
 {
   color: white;
@@ -421,25 +419,27 @@ pre {
         text-indent: 15px;
         font-size:  medium;
 }
+/*
 i {
 }
+*/
 b {
         color: lightblue;
 }
 em.err {
         color: DeepSkyBlue;
         font-weight: bold;
-        font-stye: italic;
+        font-style: italic;
 }
 span.sel {
         color: #33A055;
 }
 span.img {
         font-size: small;
-        font-stye: italic;
+        font-style: italic;
 }
 img,svg {
-        vertical-alignment: super;
+        vertical-align: super;
         font-size: small;
         background: #f1f1f1;
         color: #f1f1f1;
@@ -454,18 +454,24 @@ sub {
 a {
         color: tomato;
 }
+/*
 a.ref {
 }
+*/
 a.cnd {
         color: lightyellow;
 }
+/*
 a.img {
 }
 a.snd {
 }
 a.mpg {
 }
+*/
 p {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .epwing_image {
   display: inline-block !important;
@@ -916,4 +922,9 @@ tr:last-child th:last-child { border-bottom-right-radius: 2px; }
   margin-right: 4px;
   margin-bottom: 4px;
   text-decoration: none;
+}
+
+.sdct_m {
+  margin-left: 10px;
+  margin-right: 10px;
 }
