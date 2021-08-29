@@ -7,11 +7,11 @@ body
   margin-bottom: 3px;
   background: #222;
   color: white;
-  
+
   line-height: 1.5em;
 }
-::selection { 
-  background: #17A2E5; 
+::selection {
+  background: #17A2E5;
 }
 strong {
   color: #45D079;
@@ -469,10 +469,7 @@ a.snd {
 a.mpg {
 }
 */
-p {
-  margin-left: 10px;
-  margin-right: 10px;
-}
+
 .epwing_image {
   display: inline-block !important;
 }
@@ -500,55 +497,55 @@ br {
 /* .gdarticle {
 	font-family: ＭＳ Ｐゴシック,游明朝,HG丸ｺﾞｼｯｸM-PRO;
 } */
-/* 
+/*
 h3, pre {
   font-family: ヒラギノ角ゴシック W2;
 } */
 
 body, h3, h2, pre{
-  font-family : 
+  font-family :
   'MS Gothic' ;
 }
 /* 'ヒラギノ角ゴ ProN' ,
-'Hiragino Kaku Gothic ProN' , 
-  '游ゴシック' , '游ゴシック体' , 
+'Hiragino Kaku Gothic ProN' ,
+  '游ゴシック' , '游ゴシック体' ,
   'Hiragino Kaku Gothic',
   YuGothic ,
-  'MS UI Gothic' ,  
-  'Yu Gothic' , 
+  'MS UI Gothic' ,
+  'Yu Gothic' ,
   'メイリオ' ,
-   Meiryo , 
-   'ＭＳ ゴシック' , 
- 
-   'MS UI Gothic' , 
-   HiraKakuProN-W3 , 
-   'TakaoExゴシック' , 
-   TakaoExGothic , 
-   'MotoyaLCedar' , 
-   'Droid Sans Japanese' , 
+   Meiryo ,
+   'ＭＳ ゴシック' ,
+
+   'MS UI Gothic' ,
+   HiraKakuProN-W3 ,
+   'TakaoExゴシック' ,
+   TakaoExGothic ,
+   'MotoyaLCedar' ,
+   'Droid Sans Japanese' ,
 */
 
 body, h3, h2, pre{
-  font-family : 
+  font-family :
   'MS UI Gothic';
 }
  body, h3, h2, pre{
-  font-family : 
+  font-family :
   'Yu Gothic' ;
 }
-/* 
+/*
 body, h3, h2, pre{
-  font-family : 
+  font-family :
   Meiryo;
 }
 
 body, h3, h2, pre{
-  font-family : 
+  font-family :
   'MS UI Gothic';
 }
 
 body, h3, h2, pre{
-  font-family : 
+  font-family :
   sans-serif;
 } */
 
@@ -721,7 +718,7 @@ ul.clearfix {
   right: 0;
   background: #080808;
   padding: 0 5px 0 5px;
-  border-radius: 3px;  
+  border-radius: 3px;
 }
 
 tr td:first-child {
