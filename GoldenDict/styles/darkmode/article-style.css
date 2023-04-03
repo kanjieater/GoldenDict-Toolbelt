@@ -721,6 +721,12 @@ ul.clearfix {
   border-radius: 3px;
 }
 
+/* top:0px;
+right:0px;
+background-color: #34b735;
+padding: 5px;
+border-radius: 3px; */
+
 tr td:first-child {
   width: 1%;
   white-space: nowrap;
@@ -818,7 +824,7 @@ tr:last-child th:last-child { border-bottom-right-radius: 2px; }
 }
 
 .flash-notice {
-  position:fixed;
+  position: fixed;
   top:0px;
   right:0px;
   background-color: #34b735;
@@ -924,4 +930,14 @@ tr:last-child th:last-child { border-bottom-right-radius: 2px; }
 .sdct_m {
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.gddicticon img {
+  height: 17px;
+  margin-top: 6px;
+  margin-bottom: -6px;
+}
+
+.gdarticle {
+  content-visibility: visible;
 }
