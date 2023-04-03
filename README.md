@@ -21,7 +21,7 @@
 3/21/2021 - Minor updates and inclusion of styles
 4/25/2021 - Major update. 
 
-Now supports latest beta build of GoldenDict. Please update to the latest version <a href="https://sourceforge.net/projects/goldendict/files/early%20access%20builds/GoldenDict-1.5.0-RC2-372-gc3ff15f-Install.exe/download">here</a>. Then extract that `7z` file (with winzip, winrar or a 7z extractor program) to your `C:\Program Files\`. This should result in `C:\Program Files\GoldenDict` and a bunch of files inside. Be sure to select yes to any files that conflict with `C:\Program Files\GoldenDict`, we want to update everything in it to the latest version.
+Now supports latest beta build of GoldenDict. Please update to the latest version <a href="https://github.com/xiaoyifang/goldendict/releases/tag/v23.04.02-QingmingFestival.230402.ce9436f9">here</a>. I am using the `6.4.3-GoldenDict.exe_windows-2019_20230402-xapian.zip` version. Then extract that `zip` file (with winzip, winrar or a 7z extractor program) to your `C:\Program Files\`. This should result in `C:\Program Files\GoldenDict` and a bunch of files inside. Be sure to select yes to any files that conflict with `C:\Program Files\GoldenDict`, we want to update everything in it to the latest version.
 
 Switched fonts. Please install <addon-folder>247820692\assets\fonts\yugothic.ttf. 
 
